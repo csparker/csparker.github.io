@@ -12,7 +12,7 @@ This post describes the tissue-weighted mean, a technique to address a hitherto 
 
 ## What is the problem?
 
-CSF partial volume can be a significant problem for estimating microstructure. Techniques that model CSF explicitly have been proposed to eliminate the effect of CSF contamination ([Pasternak _et. al._ 2009, _Mag. Res. Med., Zhang _et. al._ 2012, _Neuroimage_](#references)). Addressing this problem is especially important for studies of aging and neurodegenerative diseases ([Metzler-Baddeley _et. al._, 2012, _Neuroimage_](#references)). 
+CSF partial volume can be a significant problem for estimating microstructure. Techniques that model CSF explicitly have been proposed to eliminate the effect of CSF contamination ([Pasternak _et. al._ 2009, _Mag. Res. Med._, Zhang _et. al._ 2012, _Neuroimage_](#references)). Addressing this problem is especially important for studies of aging and neurodegenerative diseases ([Metzler-Baddeley _et. al._, 2012, _Neuroimage_](#references)). 
 
 However, this approach renders the conventional way of computing ROI means problematic. Figure 1 illustrates this with a toy example using NODDI.
 
@@ -102,13 +102,13 @@ As before, bias is higher for ROIs that border CSF. As suggested by the YOAD stu
 
 ## Summary
 
-Advanced diffusion MRI models can estimate tissue-specific parameters by explicitly accounting for CSF contamination. However, conventional ROI means of such tissue metrics are nevertheless biased when the ROI contains voxels contaminated with CSF (Fig 1, 3). The tissue-weighted mean leverages tissue volume fraction estimates to overcome this (Fig. 2). This allows more accurate estimates of ROI means in the regions bordering CSF and in studies of aging and neurodegenerative disease (Fig. 4). To read more about the tissue-weighted mean and learn how to apply it to your dataset, check out the official [publication][tissue-weighted-mean-preprint] and dedicated [walkthrough][tissue-weighted-mean-walkthrough].
+Advanced diffusion MRI models can estimate tissue-specific parameters by explicitly accounting for CSF contamination. However, conventional ROI means of such tissue metrics are nevertheless biased when the ROI contains voxels contaminated with CSF (Fig 1, 3). The tissue-weighted mean leverages tissue volume fraction estimates to overcome this (Fig. 2). This allows more accurate estimates of ROI means in the regions bordering CSF and in studies of aging and neurodegenerative disease (Fig. 4). To read more about the tissue-weighted mean and learn how to apply it to your dataset, check out the official [publication][tissue-weighted-mean-doi] and dedicated [walkthrough][tissue-weighted-mean-walkthrough].
 
 <br/>
 
 ## References
 
-Parker, C.S., Veale, T., Bocchetta, M., Slattery, C.F., Malone, I.B., Thomas, D.L., Schott, J.M., Cash, D.M. & Zhang, H., 2021. Not all voxels are created equal: reducing estimation bias in regional NODDI metrics using tissue-weighted means. Pre-print in _bioRxiv_. doi: [https://doi.org/10.1101/2021.06.29.450089][tissue-weighted-mean-doi]
+Parker, C.S., Veale, T., Bocchetta, M., Slattery, C.F., Malone, I.B., Thomas, D.L., Schott, J.M., Cash, D.M. & Zhang, H., 2021. Not all voxels are created equal: reducing estimation bias in regional NODDI metrics using tissue-weighted means. _Neuroimage_, 118749. doi: [https://doi.org/10.1016/j.neuroimage.2021.118749][tissue-weighted-mean-doi]
 
 Pasternak, O., Sochen, N., Gur, Y., Intrator, N. and Assaf, Y. Free water elimination and mapping from diffusion MRI. _Magnetic Resonance in Medicine: An Official Journal of the International Society for Magnetic Resonance in Medicine_ 62(3), 717-730 (2009). [https://doi.org/10.1002/mrm.22055][fwe]
 
@@ -118,9 +118,8 @@ Metzler-Baddeley, C., O’Sullivan, M. J., Bells, S., Pasternak, O. & Jones, D. 
 
 
 
-[tissue-weighted-mean-preprint]: https://www.biorxiv.org/content/10.1101/2021.06.29.450089v3.abstract
 [tissue-weighted-mean-walkthrough]: https://github.com/tdveale/TissueWeightedMean
-[tissue-weighted-mean-doi]: https://doi.org/10.1101/2021.06.29.450089
+[tissue-weighted-mean-doi]: https://doi.org/10.1016/j.neuroimage.2021.118749
 [fwe]: https://doi.org/10.1002/mrm.22055
 [noddi]: https://doi.org/10.1016/j.neuroimage.2012.03.072
 [metzler]: https://doi.org/10.1016/j.neuroimage.2011.08.043
