@@ -1,67 +1,77 @@
 ---
 layout: post
-title:  "Tissue-weighted means"
+title:  "Not all voxels are created equal: reducing estimation bias in regional NODDI metrics using tissue-weighted means"
 date:   2021-11-16 12:14:23 +0000
 categories: research
 ---
 
-This post describes the tissue-weighted mean, a new way of summarising NODDI tissue microstructure metrics in regions-of-interest.
-Read the official publication on the tissue-weighted mean [here][tissue-weighted-mean-preprint].
+This post describes the tissue-weighted mean, a technique to address a hitherto unrecognised problem in estimating mean tissue microstructure within a region of interest. The method provides a more accurate estimate of ROI means in the presence of CSF partial volume.
 
 
-## Why tissue-weighted means?
+<br/>
 
-# Conventional means are biased.
+## What is the problem?
 
-The goal of calculating an ROI mean of a tissue metric is normally to find its average value across the tissue within the ROI. The conventional way to do this is prone to bias, as shown in the example ROI below.
+CSF partial volume can be a significant problem for estimating microstructure. Techniques that model CSF explicitely have been proposed to eliminate the effect of CSF contamination ([Pasternak _et. al._ 2009, _Mag. Res. Med., Zhang _et. al._ 2012, _Neuroimage_](#references)). Addressing this problem is especially important for studies of aging and neurodegenerative diseases ([Metzler-Baddeley _et. al._, 2012, _Neuroimage_](#references)). 
+
+However, this approach renders the conventional way of computing ROI means problematic. Figure 1 illustrates this with a toy example using NODDI.
+
 
 <br/>
 <img src="{{ site.url }}/fig1.png">
 <br/>
-
-Figure 1: Conventional mean does not equal the ground truth mean in an ROI containing voxels contaminated by cerebrospinal fluid.
-
-The conventional method computes the mean by summing the tissue metric across all voxels and dividing by the total number of voxels. However, by assuming all voxels contain an equal amount of tissue, the values of metrics in voxels containing less tissue (i.e. more CSF, left-most voxel) are over-weighted, generating a bias. 
-
-This is the case not only when estimating means of NODDI tissue metrics, but also the mean of any other compartmental metric that is derived from a multi-compartment model (such as those from free water elimiation).
-
-# Tissue-weighted means are unbiased.
-
-NODDI estimates the amount of tissue in each voxel, allowing this mis-estimation to be prevented. 
-
-By using NODDI's tissue fraction parameter (1 - FISO), which is enabled by NODDI's explicit representation of the CSF compartment, the tissue-weighted mean instead calculates a weighted mean. The weighted mean sums the metric across the tissue within the ROI and divides by the total tissue volume:
-
-<br/>
-![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?\Large&space;\mathrm{Tissue{\text -}weighted \, mean=\frac{\sum_{i=1}^{n} TF_{i} M_{i}}{\sum_{i=1}^{n} TF_{i}}})
+<font size="2"> <strong>Figure 1:</strong> Toy example of an ROI showing that the conventional way to compute the ROI mean can prodice inaccurate results. </font>
 <br/>
 
-This estimate is unbiased and more accurate in ROIs containing voxels contaminated by CSF, as demonstrated below.
+The figure depicts an ROI consisting of two voxels that cover an area of brain tissue and CSF. The ground truth ROI mean is 0.567, which is the average of the ground truth tissue properties in each sub-square of the tissue within the ROI.
+
+The conventional mean simply averages the estimated tissue metric from the two voxels that make up the ROI. It estimates the ROI mean as 0.575, which is incorrect. The figure explains why this is wrong: the conventional mean ignores the fact that the amount of tissue in the voxels comprising the ROI are different. The voxel on the left is half tissue, half CSF. In contrast, the voxel on the right contains only tissue. By ignoring variation in tissue volume across voxels, the conventional mean has over-weighted the contribution of voxels containing less tissue.
+
+The conventional mean can therefore produce inaccurate results for ROIs which contain voxels contaminated by CSF. This is a problem not only when estimating the ROI mean of NODDI tissue metrics, but the ROI mean of any tissue metric derived from a model that also estimates the amount of tissue in each voxel, such as the free water elimiation (FWE) method ([Pasternak _et. al._ 2009, _Mag. Res. Med._](#references)).
+
+<br/>
+
+## What is the tissue-weighted mean?
+
+The problem is overcome by applying the tissue-weighted mean. This weighted mean sums the tissue metric across the tissue within the ROI and divides by the total tissue volume:
+
+
+<br/>
+![\Large](https://latex.codecogs.com/svg.latex?\Large&space;\mathrm{Tissue{\text -}weighted \, mean=\frac{\sum_{i=1}^{n} TF_{i} M_{i}}{\sum_{i=1}^{n} TF_{i}}})
+<br/>
+
+The correct weighting is prescribed for each voxel by using the tissue volume fraction estimates as weights. This calculation is made possible when tissue metrics are accompanied by estimates of tissue volume, as is the case with NODDI and the FWE method. 
+
+The example below demonstrates that the tissue-weighted mean produces accurate estimates of ROI means in the presence of CSF contamination.
 
 <br/>
 <img src="{{ site.url }}/fig2.png">
 <br/>
-
-Figure 2: Tissue-weighted mean equals the ground truth mean in an ROI containing voxels contaminated by CSF.
+<font size="2"> <strong>Figure 2:</strong> Toy example of the same ROI as in Figure 1, showing that the tissue-weighted mean accurately estimates the ROI mean when the ROI contains voxels contaminated by CSF. </font>
+<br/>
 
 [comment]: <> (<img src="https://render.githubusercontent.com/render/math?math=\frac{1}{2}">)
 
-This prevention of CSF contamination-induced bias is important in studies of ROIs that border CSF and in studies of neurodegenerative disease, where atrophy can lead to larger ventricle volumes and more CSF contamination.
+In comparison to the conventional mean, the tissue-weighted mean has correctly estimated the ground truth ROI mean. Using the tissue-weighted mean may be important for studies of ROIs that border CSF and in cases of neurodegenerative disease where atrophy can lead to larger ventricle volumes and more CSF contamination. 
+
+Below is a summary of our study comparing the tissue-weighted and conventional mean in a cohort of control subjects and patients with neurodegenerative disease. The tissue-weighted mean is used to measure the extent of bias in conventional means and its impact on group differences.
 
 <br/>
 
 ## Evidence of bias in real-world data
 
-# Bias is high in patients and in ROIs that border CSF.
+# Bias is higher in patients and in ROIs that border CSF.
 
 The magnitude of bias is significantly different from zero for many ROIs, in both healthy control subjects or patients with YOAD. This is demonstrated by the high number of ROIs with points above the bar in the plot below, denoting that the mean of the bias (the height of the bar) across subjects is not equal to zero.
 
 <br/>
 <img src="{{ site.url }}/fig3.png">
 <br/>
+<font size="2"> <strong>Figure 3:</strong> Bias in healthy subjects and those with young Onset Alzheimers disease (YOAD), for NODDI's tissue microstructure parameters of neurite density 
+index (NDI) and orientation dispersion index (ODI). Positive bias indicates the conventional mean is over-estimated compared to the tissue-weighted mean. </font>
+<br/>
 
-Figure 3: Bias in healthy subjects and those with young Onset Alzheimers disease (YOAD), for NODDI's tissue microstructure parameters of neurite density index (NDI) and orientation dispersion index (ODI). Positive bias indicates the conventional mean is over-estimated compared to the tissue-weighted mean.
-
-The figure shows that bias is more extreme in the ROIs that border CSF (such as the fornix (FX)) compared to those that do not (such as the superior longitudinal fasciculus (SLF)). Furthermore, YOAD patients (turquoise bars) tend to have more extreme bias than control subjects (red bars), which is due to their larger ventricle volumes, a property arising from brain atrophy.
+The figure shows that bias is more extreme in the ROIs that border CSF (such as the fornix (FX)) compared to those that do not (such as the superior longitudinal fasciculus (SLF)). Furthermore, subjects with young onset Alzheimer's disease (YOAD, turquoise bars) tend to have more extreme bias than control subjects (red bars). This is due to their larger ventricle volumes due to brain atrophy.
 
 # Conventional means mis-estimate group differences.
 
@@ -71,8 +81,8 @@ Because the patient group tends to have higher bias than the control group, the 
 <br/>
 <img src="{{ site.url }}/fig4.png">
 <br/>
-
-Figure 4: Effect sizes for group differences between control and patient groups using the conventional mean (blue) and tissue-weighted mean (red).
+<font size="2"> <strong>Figure 4:</strong> Effect sizes for group differences between control and patient groups using the conventional mean (blue) and tissue-weighted mean (red). </font>
+<br/>
 
 This mis-estimation of group differences particularly affects those ROIs that typically border CSF (e.g. FX) or become more contaminated by CSF following brain atrophy (e.g. the hippocampal cingulum (CGH)).
 
@@ -83,7 +93,8 @@ Despite ROIs in higher resolution images containing relatively fewer voxels that
 <br/>
 <img src="{{ site.url }}/fig5.png">
 <br/>
-Figure 5: Bias in the conventional means of ADNI data.
+<font size="2"> <strong>Figure 5:</strong> Bias in the conventional means of ADNI data. </font>
+<br/>
 
 As before, bias is higher for ROIs that border CSF. As suggested by the YOAD study, such bias is likely to result in mis-estimation of group differences, due to the greater correction of CSF contamination in the patient group.
 
@@ -91,13 +102,26 @@ As before, bias is higher for ROIs that border CSF. As suggested by the YOAD stu
 
 ## Summary
 
-The conventional way to compute ROI means of NODDI tissue metrics is biased when the ROI contains voxels contaminated with CSF (Fig 1, 3). The tissue-weighted mean leverages NODDI's tissue fraction parameter to overcome this (Fig. 2). This allows more accurate estimates of ROI means in the regions bordering CSF and in studies of aging and neurodegenerative disease (Fig. 4). To read more about the tissue-weighted mean and learn how to apply it to your dataset, check out the dedicated [walkthrough][tissue-weighted-mean-walkthrough] or the official [publication][tissue-weighted-mean-preprint].
+Advanced diffusion MRI models can estimate tissue-specific parameters by explicitely accounting for CSF contamination. However, conventional ROI means of such tissue metrics are nevertheless biased when the ROI contains voxels contaminated with CSF (Fig 1, 3). The tissue-weighted mean leverages tissue volume fraction estimates to overcome this (Fig. 2). This allows more accurate estimates of ROI means in the regions bordering CSF and in studies of aging and neurodegenerative disease (Fig. 4). To read more about the tissue-weighted mean and learn how to apply it to your dataset, check out the official [publication][tissue-weighted-mean-preprint] and dedicated [walkthrough][tissue-weighted-mean-walkthrough].
+
+<br/>
 
 ## References
 
-Parker, C.S., Veale, T., Bocchetta, M., Slattery, C.F., Malone, I.B., Thomas, D.L., Schott, J.M., Cash, D.M. and Zhang, H., 2021. Not all voxels are created equal: reducing estimation bias in regional NODDI metrics using tissue-weighted means. Pre-print in bioRxiv. doi: https://doi.org/10.1101/2021.06.29.450089.
+**Parker, C.S.**, **Veale, T.**, Bocchetta, M., Slattery, C.F., Malone, I.B., Thomas, D.L., Schott, J.M., Cash, D.M. & Zhang, H., 2021. Not all voxels are created equal: reducing estimation bias in regional NODDI metrics using tissue-weighted means. Pre-print in _bioRxiv_. doi: [https://doi.org/10.1101/2021.06.29.450089][tissue-weighted-mean-doi]
+
+Pasternak, O., Sochen, N., Gur, Y., Intrator, N. and Assaf, Y. Free water elimination and mapping from diffusion MRI. _Magnetic Resonance in Medicine: An Official Journal of the International Society for Magnetic Resonance in Medicine_ 62(3), 717-730 (2009). [https://doi.org/10.1002/mrm.22055][fwe]
+
+Zhang, H., Schneider, T., Wheeler-Kingshott, C. A. & Alexander, D. C. NODDI: practical in vivo neurite orientation dispersion and density imaging of the human brain. _Neuroimage_ 61, 1000–1016 (2012). [https://doi.org/10.1016/j.neuroimage.2012.03.072][noddi]
+
+Metzler-Baddeley, C., O’Sullivan, M. J., Bells, S., Pasternak, O. & Jones, D. K. How and how not to correct for CSF-contamination in diffusion MRI. _Neuroimage_ 59, 1394–1403 (2012). [https://doi.org/10.1016/j.neuroimage.2011.08.043][metzler]
+
 
 
 [tissue-weighted-mean-preprint]: https://www.biorxiv.org/content/10.1101/2021.06.29.450089v3.abstract
 [tissue-weighted-mean-walkthrough]: https://github.com/tdveale/TissueWeightedMean
+[tissue-weighted-mean-doi]: https://doi.org/10.1101/2021.06.29.450089
+[fwe]: https://doi.org/10.1002/mrm.22055
+[noddi]: https://doi.org/10.1016/j.neuroimage.2012.03.072
+[metzler]: https://doi.org/10.1016/j.neuroimage.2011.08.043
 
