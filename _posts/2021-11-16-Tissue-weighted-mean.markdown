@@ -5,8 +5,15 @@ date:   2021-11-16 12:14:23 +0000
 categories: research
 ---
 
-This post describes the tissue-weighted mean, a technique to address a hitherto unrecognised problem in estimating mean tissue microstructure within a region of interest. The method provides a more accurate estimate of ROI means in the presence of CSF partial volume.
 
+This post describes the tissue-weighted mean, a technique to address a hitherto unrecognised problem in estimating mean tissue microstructure within a region of interest. In brief, the technique provides a more accurate estimate of ROI means in the presence of CSF partial volume.
+
+<br/>
+
+[comment]: <> (**Contents**)
+**Table of contents**
+* TOC
+{:toc}
 
 <br/>
 
@@ -33,7 +40,7 @@ The conventional mean can therefore produce inaccurate results for ROIs which co
 
 ## What is the tissue-weighted mean?
 
-The problem is overcome by applying the tissue-weighted mean. This weighted mean sums the tissue metric across the tissue within the ROI and divides by the total tissue volume:
+The problem of mis-estimating ROI means in the presence of CSF partial volume  is overcome by applying the tissue-weighted mean. This weighted mean sums the tissue metric across the tissue within the ROI and divides by the total tissue volume:
 
 
 <br/>
@@ -54,15 +61,15 @@ The example below demonstrates that the tissue-weighted mean produces accurate e
 
 In comparison to the conventional mean, the tissue-weighted mean has correctly estimated the ground truth ROI mean. Using the tissue-weighted mean may be important for studies of ROIs that border CSF and in cases of neurodegenerative disease where atrophy can lead to larger ventricle volumes and more CSF contamination. 
 
-Below is a summary of our study comparing the tissue-weighted and conventional means in a cohort of control subjects and patients with neurodegenerative disease. The tissue-weighted mean is used to measure the extent of bias in conventional means and its impact on group differences.
-
 <br/>
 
 ## Evidence of bias in real-world data
 
-# Bias is higher in patients and in ROIs that border CSF.
+Below is a summary of our study comparing the tissue-weighted and conventional means in a cohort of control subjects and patients with neurodegenerative disease. The tissue-weighted mean is used to measure the extent of bias in conventional means and its impact on group differences.
 
-The magnitude of bias is significantly different from zero for many ROIs, in both healthy control subjects and patients with young onset Alzheimer's disease (YOAD). This is demonstrated by the high number of ROIs with points above the bar in the plot below, denoting that the mean of the bias (the height of the bar) across subjects is not equal to zero.
+### Bias is higher in patients and in ROIs that border CSF.
+
+The magnitude of bias in conventional ROI means is significantly higher than zero for many ROIs, for both healthy control subjects and patients with young onset Alzheimer's disease (YOAD). This is demonstrated by the high number of ROIs with points above the bar in the plot below, denoting that the mean of the bias (the height of the bar) across subjects is not equal to zero.
 
 <br/>
 <img src="{{ site.url }}/fig3.png">
@@ -73,20 +80,21 @@ index (NDI) and orientation dispersion index (ODI). Positive bias indicates the 
 
 The figure shows that bias is more extreme in the ROIs that border CSF (such as the fornix (FX)) compared to those that do not (such as the superior longitudinal fasciculus (SLF)). Furthermore, subjects with YOAD (turquoise bars) tend to have more extreme bias than control subjects (red bars). This is because YOAD patients have larger ventricle volumes due to brain atrophy.
 
-# Conventional means mis-estimate group differences.
+<br/>
 
+### Conventional means mis-estimate group differences.
 
 Because the patient group tends to have higher bias than the control group, the tissue-weighted mean tends to correct the ROI mean of the patient group more so than the control group. This results in a mis-estimation of group differences when using the conventional mean.
 
 <br/>
 <img src="{{ site.url }}/fig4.png">
 <br/>
-<font size="2"> <strong>Figure 4:</strong> Effect sizes for group differences between control and patient groups using the conventional mean (blue) and tissue-weighted mean (red). </font>
+<font size="2"> <strong>Figure 4:</strong> Effect sizes for group differences between control and patient groups using the conventional mean (blue) and tissue-weighted mean (red). Applying the tissue-weighted mean can result in a gain or loss of significance in tests of group differences, as shown by the points beside the bars. </font>
 <br/>
 
-This mis-estimation of group differences particularly affects those ROIs that typically border CSF (e.g. FX) or become more contaminated by CSF following brain atrophy (e.g. the hippocampal cingulum (CGH)).
+This mis-estimation of group differences particularly affects those ROIs that typically border CSF (e.g. FX) or become more contaminated by CSF following brain atrophy (e.g. the hippocampal cingulum (CGH)). 
 
-# Bias remains at higher image resolution.
+### Bias remains at higher image resolution.
 
 Despite ROIs in higher resolution images containing relatively fewer voxels that border CSF, significant levels of bias are still observed for many ROIs. This is shown in data from the Alzheimer's Disease Neuroimaging Initiative, where voxels occupy half the volume as for the YOAD dataset.
 
@@ -102,7 +110,9 @@ As before, bias is higher for ROIs that border CSF. As suggested by the YOAD stu
 
 ## Summary
 
-Advanced diffusion MRI models can estimate tissue-specific parameters by explicitly accounting for CSF contamination. However, conventional ROI means of such tissue metrics are nevertheless biased when the ROI contains voxels contaminated with CSF (Fig 1, 3). The tissue-weighted mean leverages tissue volume fraction estimates to overcome this (Fig. 2). This allows more accurate estimates of ROI means in the regions bordering CSF and in studies of aging and neurodegenerative disease (Fig. 4). To read more about the tissue-weighted mean and learn how to apply it to your dataset, check out the official [publication][tissue-weighted-mean-doi] and dedicated [walkthrough][tissue-weighted-mean-walkthrough].
+Advanced diffusion MRI models can estimate tissue-specific parameters by explicitly accounting for CSF contamination. However, conventional ROI means of such tissue metrics are nevertheless biased when the ROI contains voxels contaminated with CSF (Fig 1, 3). The tissue-weighted mean leverages tissue volume fraction estimates to overcome this (Fig. 2). This allows more accurate estimates of ROI means in the regions bordering CSF and in studies of aging and neurodegenerative disease (Fig. 4). 
+
+To read more about the tissue-weighted mean and learn how to apply it to your dataset, check out the official [publication][tissue-weighted-mean-doi] and dedicated [walkthrough][tissue-weighted-mean-walkthrough].
 
 <br/>
 
