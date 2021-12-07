@@ -21,7 +21,7 @@ I am primarily interested in identifying early brain cellular changes using diff
 - How can biomarkers of early disease inform design of clinical trials?
 - What types of cellular pathology are diffusion MRI biomarkers measuring? 
 
-My academic publications which explore these questions are linked on my [Google Scholer profile][google-scholar].
+My academic publications which explore these questions are linked on my [Google Scholar profile][google-scholar].
 
 
 [phd-thesis-link]: https://discovery.ucl.ac.uk/id/eprint/1535334/
