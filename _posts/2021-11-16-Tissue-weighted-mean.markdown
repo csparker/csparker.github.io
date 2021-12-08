@@ -25,7 +25,7 @@ However, this approach renders the conventional way of computing ROI means probl
 
 
 <br/>
-<img src="{{ site.url }}/fig1.png">
+<img src="{{ site.url }}/assets/posts/Tissue-weighted-mean/fig1.png">
 <br/>
 <font size="2"> <strong>Figure 1:</strong> Toy example of an ROI showing that the conventional way to compute the ROI mean can produce inaccurate results. </font>
 <br/>
@@ -52,7 +52,7 @@ The correct weighting is prescribed for each voxel by using the tissue volume fr
 The example below demonstrates that the tissue-weighted mean produces accurate estimates of ROI means in the presence of CSF contamination.
 
 <br/>
-<img src="{{ site.url }}/fig2.png">
+<img src="{{ site.url }}/assets/posts/Tissue-weighted-mean/fig2.png">
 <br/>
 <font size="2"> <strong>Figure 2:</strong> Toy example of the same ROI as in Figure 1, showing that the tissue-weighted mean accurately estimates the ROI mean when the ROI contains voxels contaminated by CSF. </font>
 <br/>
@@ -72,7 +72,7 @@ Below is a summary of our study comparing the tissue-weighted and conventional m
 The magnitude of bias in conventional ROI means is significantly higher than zero for many ROIs, for both healthy control subjects and patients with young onset Alzheimer's disease (YOAD). This is demonstrated by the high number of ROIs with points above the bar in the plot below, denoting that the mean of the bias (the height of the bar) across subjects is not equal to zero.
 
 <br/>
-<img src="{{ site.url }}/fig3.png">
+<img src="{{ site.url }}/assets/posts/Tissue-weighted-mean/fig3.png">
 <br/>
 <font size="2"> <strong>Figure 3:</strong> Bias in healthy subjects and YOAD patients for NODDI's tissue microstructure metrics of neurite density 
 index (NDI) and orientation dispersion index (ODI). Positive bias indicates the conventional mean is over-estimated compared to the tissue-weighted mean. </font>
@@ -87,7 +87,7 @@ The figure shows that bias is more extreme in the ROIs that border CSF (such as 
 Because the patient group tends to have higher bias than the control group, the tissue-weighted mean tends to correct the ROI mean of the patient group more so than the control group. This results in a mis-estimation of group differences when using the conventional mean.
 
 <br/>
-<img src="{{ site.url }}/fig4.png">
+<img src="{{ site.url }}/assets/posts/Tissue-weighted-mean/fig4.png">
 <br/>
 <font size="2"> <strong>Figure 4:</strong> Effect sizes for group differences between control and patient groups using the conventional mean (blue) and tissue-weighted mean (red). Applying the tissue-weighted mean can result in a gain or loss of significance in tests of group differences, as shown by the points beside the bars. </font>
 <br/>
@@ -99,7 +99,7 @@ This mis-estimation of group differences particularly affects those ROIs that ty
 Despite ROIs in higher resolution images containing relatively fewer voxels that border CSF, significant levels of bias are still observed for many ROIs. This is shown in data from the Alzheimer's Disease Neuroimaging Initiative, where voxels occupy half the volume as for the YOAD dataset.
 
 <br/>
-<img src="{{ site.url }}/fig5.png">
+<img src="{{ site.url }}/assets/posts/Tissue-weighted-mean/fig5.png">
 <br/>
 <font size="2"> <strong>Figure 5:</strong> Bias in the conventional means of ADNI data. </font>
 <br/>
