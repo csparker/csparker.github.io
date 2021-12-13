@@ -44,6 +44,11 @@ plugins:
 #- jekyll-font-awesome-sass
 # jekyll-font-awesome-sass: was recommended in a tutorial, might be best removed 
 
+# Comments
+disqus:
+    shortname: https-csparker-github-io
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
