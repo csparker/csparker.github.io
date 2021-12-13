@@ -8,7 +8,23 @@
   {%- if site.pinterest_username -%}<li><a href="https://www.pinterest.com/{{ site.pinterest_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#pinterest' | relative_url }}"></use></svg> <span class="username">{{ site.pinterest_username| escape }}</span></a></li>{%- endif -%}
   {%- for mst in site.mastodon -%}{%- if mst.username and mst.instance -%}<li><a href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#mastodon' | relative_url }}"></use></svg> <span class="username">{{ mst.username|escape }}</span></a></li>{%- endif -%}{%- endfor -%}
   {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg> <span class="username">Twitter</span></a></li>{%- endif -%}
+  {%- if site.fa-researchgate_username -%}<li><a href="https://www.researchgate.net/profile/{{ site.fa-researchgate_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/sprites/brands.svg#researchgate' | relative_url }}"></use><span class="username">ResearchGate</span></a></li>{%- endif -%}
   {%- if site.youtube_username -%}<li><a href="https://youtube.com/{{ site.youtube_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg> <span class="username">{{ site.youtube_username| escape }}</span></a></li>{%- endif -%}
   {%- if site.googleplus_username -%}<li><a href="https://plus.google.com/{{ site.googleplus_username| escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#googleplus' | relative_url }}"></use></svg> <span class="username">{{ site.googleplus_username| escape }}</span></a></li>{%- endif -%}
   {%- if site.rss -%}<li><a href="{{ 'feed.xml' | relative_url }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg> <span>{{ site.rss | escape }}</span></a></li>{%- endif -%}
 </ul>
+
+
+<!--
+To get font awesome to work (researchgate) I had to 1. download the fonts (including 'sprites') 2. add info to _config about the username 3. use xlink:href to reference the icon (which requires a sprite .svg containing many icons)
+
+Failed attemps/notes:
+
+{%- if site.fa-researchgate_username -%}<li><a href="https://www.researchgate.net/profile/{{ site.fa-researchgate_username| cgi_escape | escape }}"><i class="fab fa-researchgate"></i><span class="username">     Research Gate</span></a></li>{%- endif -%}
+
+
+{%- if site.fa-researchgate_username -%}<li><a href="https://www.researchgate.net/profile/{{ site.fa-researchgate_username| cgi_escape | escape }}"><svg class="svg-icon"><i class="fab fa-researchgate"></i><span class="username">ResearchGate</span></a></li>{%- endif -%}
+
+'/assets/webfonts/fa-brands-400.svg#fa-twitter' -->
+
+

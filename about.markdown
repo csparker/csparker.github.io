@@ -8,26 +8,26 @@ permalink: /about/
 
 <em>Overview</em>
 
-I am a Research Associate in the Computational Imaging Group at the Centre for Medical Image Computing, University College London. My research focus is on computational analysis of diffusion MRI data and its application for assessing brain pathology to neurodegenerative diseases.
+I am a Research Associate in the Computational Imaging Group at the Centre for Medical Image Computing, University College London. My research focus is on computational analysis of diffusion MRI data and its application for assessing brain pathology in neurodegenerative diseases.
 
 <br/>
 
 <em>Background & Motivation</em>
 
-During my Biomedical Research MRes at Imperial College I discovered the great potential for neuroimaging in understanding the brain and addressing clinical problems. 
+During my Biomedical Research MRes at Imperial College I became interested in the great potential of neuroimaging in aiding understanding of brain organisation and developing treatments for neurological diseases. 
 
-The Medical Image Computing MSc provided training in state-of-the-art tools in biomedical image analysis. My [PhD Thesis][phd-thesis-link] is in the area of Connectomics Neuroimaging and is titled <em>"Human brain networks: consensus, reproducibility, inter-modal comparison and epilepsy pathology"</em>. You can read more about my background and skills in my <a href="ChrisParker_CV.pdf">Curriculum Vitae</a>.
+I received training in state-of-the-art biomedical image analysis techniques during my Medical Image Computing MSc. After this I studied for a PhD in the area of Connectomics Neuroimaging under the guidance of Professors Jon Clayden and Sebastien Ourselin. My [PhD Thesis][phd-thesis-link] is titled <em>"Human brain networks: consensus, reproducibility, inter-modal comparison and epilepsy pathology"</em>. You can read more about my background and skills in my <a href="ChrisParker_CV.pdf">Curriculum Vitae</a>.
 
 <br/>
 
 <em>Current Research</em>
 
-I am primarily interested in identifying early brain cellular changes using diffusion MRI for the purpose of better understanding and treating neurological disease. In collaboration with my colleagues in CMIC, DRC, POND and the HRC, my research helps to address important questions such as: 
-- What cellular changes are occuring prior to disease onset and in response to treatment? 
-- How can biomarkers of early disease inform design of clinical trials?
-- What types of cellular pathology are diffusion MRI biomarkers measuring? 
+I am primarily interested in the use of diffusion MRI for identifying early changes in brain cellular structure, with the goal to improve understanding and treatment of neurological disease. In collaboration with my colleagues in CMIC, DRC, POND and the HRC, my research helps to address important questions such as: 
+- What are the microscopic cellular changes occuring prior to disease onset and in response to treatment? 
+- Can diffusion MRI biomarkers of cellular structure be used to inform design of clinical trials?
+- What types of microscopic pathology are diffusion MRI biomarkers measuring? 
 
-My academic publications, which explore these questions, are linked on my [Google Scholar profile][google-scholar].
+My academic publications exploring these questions can be found on my [Google Scholar profile][google-scholar].
 
 
 [phd-thesis-link]: https://discovery.ucl.ac.uk/id/eprint/1535334/

@@ -31,3 +31,6 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 # Required to prevent error
 gem "webrick" 
 
+# For font awesome (was recommended in a tutorial, might be best removed)
+#gem 'jekyll-font-awesome-sass'
+
