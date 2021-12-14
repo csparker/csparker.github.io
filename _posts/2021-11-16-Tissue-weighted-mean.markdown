@@ -5,8 +5,9 @@ date:   2021-11-16 12:14:23 +0000
 categories: research
 ---
 
-
 This post describes the tissue-weighted mean, a technique to address a hitherto unrecognised problem in estimating mean tissue microstructure within a region of interest. In brief, the technique provides a more accurate estimate of ROI means in the presence of CSF partial volume.
+
+<!--more-->
 
 <br/>
 
@@ -127,10 +128,13 @@ Zhang, H., Schneider, T., Wheeler-Kingshott, C. A. & Alexander, D. C. NODDI: pra
 Metzler-Baddeley, C., O’Sullivan, M. J., Bells, S., Pasternak, O. & Jones, D. K. How and how not to correct for CSF-contamination in diffusion MRI. _Neuroimage_ 59, 1394–1403 (2012). [https://doi.org/10.1016/j.neuroimage.2011.08.043][metzler]
 
 
-
 [tissue-weighted-mean-walkthrough]: https://github.com/tdveale/TissueWeightedMean
 [tissue-weighted-mean-doi]: https://doi.org/10.1016/j.neuroimage.2021.118749
 [fwe]: https://doi.org/10.1002/mrm.22055
 [noddi]: https://doi.org/10.1016/j.neuroimage.2012.03.072
 [metzler]: https://doi.org/10.1016/j.neuroimage.2011.08.043
+
+
+<!-- [here][this-post-link] -->
+<!-- [this-post-link]({{ site.baseurl }}{% link _posts/2021-11-16-Tissue-weighted-mean.markdown %}) -->
 

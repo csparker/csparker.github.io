@@ -21,12 +21,12 @@
 title: Chris Parker - Research Blog
 email: christopher.parker@ucl.ac.uk
 description: >- # this means to ignore newlines until "baseurl:" #Accessible synopses of brain research
+  Here you'll find articles about my academic research projects and related topics.
 
-  
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://csparker.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 author: Christopher Parker
-logo: logo.ico
+logo: logo.ico # can remove
 #twitter_username: jekyllrb
 twitter_username: Chris_ucl
 linkedin_username: christopher-parker-59132640
@@ -43,6 +43,19 @@ plugins:
 
 #- jekyll-font-awesome-sass
 # jekyll-font-awesome-sass: was recommended in a tutorial, might be best removed 
+
+# # Skins (only for minima >3.0  e.g. _sass/minima/skins/dark.html from https://github.com/jekyll/minima)
+# minima:
+#   skin: dark
+
+## Extra navigation links (uncomment & create markdown file to apply)
+header_pages:
+  - about.markdown
+#  - portfolio.markdown
+
+# Post exceprts (uncomment)
+show_excerpts: true
+excerpt_separator: <!--more--> # alternatively: add "excerpt: blahblah" to front matter of post
 
 # Comments
 disqus:
