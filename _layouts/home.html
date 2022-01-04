@@ -24,11 +24,6 @@ layout: default
         {%- if site.show_excerpts -%}
           {{ post.excerpt | remove: '<p>' | remove: '</p>' | truncatewords: 35, "" }} <a href="{{ post.url | relative_url }}">&hellip; read more &raquo;</a>
           
-          <!-- note: above was originally just {{ post.excerpt }}. paragraphs removed to allow "read more" on the same line -->
-          <!-- <a href="{{ post.url | relative_url }}">read more</a> -->
-          <!-- {{ post.content | strip_html | truncatewords:75 }} -->
-          <!-- <a href="{{ post.url | relative_url }}">read more</a> -->
-          <!-- {{ post.excerpt | remove: '<p>' | remove: '</p>' | truncatewords: 25}} <a href="{{ post.url | relative_url }}">&hellip; read more &raquo;</a> -->
         {%- endif -%}
       </li>
       {%- endfor -%}
@@ -37,3 +32,4 @@ layout: default
   {%- endif -%}
 
 </div>
+

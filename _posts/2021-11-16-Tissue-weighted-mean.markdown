@@ -44,9 +44,12 @@ The conventional mean can therefore produce inaccurate results for ROIs which co
 The problem of mis-estimating ROI means in the presence of CSF partial volume  is overcome by applying the tissue-weighted mean. This weighted mean sums the tissue metric across the tissue within the ROI and divides by the total tissue volume:
 
 
+<p align="center">
 <br/>
-![\Large](https://latex.codecogs.com/svg.latex?\Large&space;\mathrm{Tissue{\text -}weighted \, mean=\frac{\sum_{i=1}^{n} TF_{i} M_{i}}{\sum_{i=1}^{n} TF_{i}}})
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\mathrm{Tissue{\text -}weighted \, mean=\frac{\sum_{i=1}^{n} TF_{i} M_{i}}{\sum_{i=1}^{n} TF_{i}}}">
 <br/>
+</p>
+
 
 The correct weighting is prescribed for each voxel by using the tissue volume fraction estimates as weights. This calculation is made possible when tissue metrics are accompanied by estimates of tissue volume, as is the case with NODDI and the FWE method. 
 
